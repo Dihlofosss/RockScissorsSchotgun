@@ -15,7 +15,7 @@ namespace RockScissorsSchotgun
             var winCount = 0;
             var loseCount = 0;
             var gamesCount = 0;
-            
+
             SelectRules(); //call selection of the game's type
             
             while (true)
@@ -54,12 +54,15 @@ namespace RockScissorsSchotgun
                 {
                     winCount++;
                 }
+                
                 else if (Decision.Decide(playerItem, aiItem).GetWinnerInfo() == false)
                 {
                     loseCount++;
                 }
+
+                var winRate = Math.Round((((float)winCount / gamesCount) * 100), 2);
                 
-                Console.WriteLine("You won {0} times. Opponent won {1} times. Total games played {2}", winCount, loseCount, gamesCount);
+                Console.WriteLine("\nYou won: {0} times. Opponent won: {1} times.\nTotal games played: {2}. Win rate: {3}%\n", winCount, loseCount, gamesCount, winRate);
                 Console.WriteLine("Play one more game? Y/N\n'YES' is default selection");
                 var input = InputCommand();
                 switch (input)
